@@ -1,4 +1,15 @@
 .title{
+    display: flex;
+    margin: 20px;
+    justify-content: center;
+    align-items: flex-start;
     font-size: 70px;
     color: brown;
+}
+
+.subtitle{
+    font-size: 30px;
+    color: rgb(10, 92, 92);
+    display: flex;
+    justify-content: center;
 }

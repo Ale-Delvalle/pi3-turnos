@@ -1,0 +1,13 @@
+span{
+    font-size: 40px;
+    margin: 10px;
+}
+
+.config{
+    justify-content: center;
+    display: flex;
+    width: fit-content;
+    color: rgb(255, 255, 255);
+    background-color: rgb(153, 0, 0);
+    margin: 15px auto;
+}

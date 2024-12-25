@@ -1,11 +1,15 @@
 import styles from './App.module.css'
-import Home from './views/home'
+import Navbar from './components/Navbar/Navbar'
+import Home from './views/Home'
+import MisTurnos from './views/MyAppointments'
 
 function App() {
   return (
     <>
-    <h1 className={styles.title}>Vite + React</h1>
+    <h1 className={styles.title}>Clínica San Sebastián </h1>
+    <Navbar/>
     <Home/>
+    <MisTurnos/>
     </>
   )
 }

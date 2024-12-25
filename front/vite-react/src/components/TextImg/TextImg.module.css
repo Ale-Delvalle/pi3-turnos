@@ -1,0 +1,14 @@
+p{
+    font-size: 20px;
+    color: black;
+    margin:15px;
+    padding:10px;
+}
+img{
+    margin: 5px;
+    border-radius: 10px;
+}
+.orden{
+    display: flex;
+}
+
