@@ -10,8 +10,9 @@ const Home = () => {
             <h1 className={styles.subtitle}>Home (titulo)</h1>
             <div className={styles.containerTextImg}>
             {
+                
                 stringsToShow.map(text=>{
-                    return <TextImg text={text}/>
+                    return <TextImg key={text.id}  text={text.contenido}/>
                 })
             }           
             </div>

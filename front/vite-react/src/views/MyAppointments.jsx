@@ -1,10 +1,22 @@
 import styles from './MyAppointments.module.css'
-import MisTurnosMockData from '../helpers/myAppointments'
-import {useState} from 'react'
+import {useState,useEffect} from 'react'
 import Appointment from '../components/Appointment/Appointment'
+import axios from 'axios'
 
 const MisTurnos = () => {
-    const [turnos,setTurnos]=useState(MisTurnosMockData)
+    const [turnos,setTurnos]=useState([])
+    useEffect(()=>{
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('http://localhost:3001/appointments/turnos');
+                setTurnos(response.data)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        fetchData()
+    },[])
+
     return (
         <div>
             <h1>Mis turnos.</h1>
@@ -22,7 +34,7 @@ const MisTurnos = () => {
                         )
                     })
                 ) : (
-                    <div>No tienes ningún turno.</div>
+                    <div style={{color:"white"}}>No tienes ningún turno.</div>
                 )
             }
             </div>
