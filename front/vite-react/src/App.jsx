@@ -1,15 +1,21 @@
 import styles from './App.module.css'
 import Navbar from './components/Navbar/Navbar'
-import Home from './views/Home'
-import MisTurnos from './views/MyAppointments'
+import Home from './views/Home/Home'
+import MisTurnos from './views/MyAppointments/MyAppointments'
+import Login from './views/Login/Login'
+import Register from './views/Register/Register'
 
 function App() {
   return (
     <>
     <h1 className={styles.title}>Clínica San Sebastián </h1>
-    <Navbar/>
+    {/* <Navbar/>
     <Home/>
-    <MisTurnos/>
+    <MisTurnos/> */}
+    <div style={{display:'flex'}}>
+    <Login/>
+    <Register/>
+    </div>
     </>
   )
 }

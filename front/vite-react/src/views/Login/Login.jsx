@@ -1,0 +1,74 @@
+import React, {useEffect, useState} from 'react'
+import { validateLogin } from '../../helpers/validate'
+import axios from 'axios'
+import styles from './Login.module.css'
+const Login = () => {
+    const initialValues = {
+        userName:'',
+        password:''
+    }
+
+    const [isSubmitting, setIsSubmitting]=useState(false)
+
+    const [formData,setFormData]=useState(initialValues)
+    const [errors,setErrors]=useState(initialValues)
+
+    const handleChange = (event) => {
+        const {name,value}=event.target;
+        setFormData({
+            ...formData, [name]:value
+        })
+    }
+
+    useEffect(() => {
+        const errors=validateLogin(formData)
+        setErrors(errors)
+    },[formData])
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        setIsSubmitting(true)
+        postData();
+    }
+
+    const postData = async () => {
+        try {
+            const response = await axios.post('http://localhost:3001/users/login', formData)
+            if(response.status === 200) {
+                alert('Usuario logueado exitosamente')
+            }else{
+                alert('El usuario NO se logueó exitosamente')
+            }
+        } catch (error) {
+            console.log(error)
+            setIsSubmitting(false)
+            alert('El usuario no se pudo loguear')
+        }
+    }
+
+    return (
+        <div className={styles.formContainer}>
+            <h1>Ingresa al sistema de turnos</h1>
+            <form onSubmit={handleSubmit}>
+                <div>
+                    <label>Username</label>
+                    <input type="text" name='userName' placeholder='Usuario'
+                    value={formData.userName} onChange={handleChange}/><br/>
+                    {errors.userName && <span>{errors.userName}</span>}
+                </div>
+
+                <div>
+                    <label>Contraseña:</label>
+                    <input type="password" name='password' placeholder='********'
+                    value={formData.password} onChange={handleChange}/><br/>
+                    {errors.password && <span>{errors.password}</span>}
+                </div>
+
+                <button disabled={isSubmitting||errors.userName||errors.password} type='submit'>Login </button>
+                {isSubmitting && <span>Enviando formulario</span>}
+            </form>
+        </div>
+    )
+}
+
+export default Login

@@ -1,6 +1,6 @@
 import styles from './MyAppointments.module.css'
 import {useState,useEffect} from 'react'
-import Appointment from '../components/Appointment/Appointment'
+import Appointment from '../../components/Appointment/Appointment'
 import axios from 'axios'
 
 const MisTurnos = () => {

@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import texts from '../helpers/texts'
+import texts from '../../helpers/texts'
 import styles from './Home.module.css'
-import TextImg from '../components/TextImg/TextImg'
+import TextImg from '../../components/TextImg/TextImg'
 
 const Home = () => {
     const [stringsToShow,setStringsToShow]=useState(texts)
