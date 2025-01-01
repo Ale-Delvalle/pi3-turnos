@@ -6,17 +6,18 @@ import TextImg from '../../components/TextImg/TextImg'
 const Home = () => {
     const [stringsToShow,setStringsToShow]=useState(texts)
     return (
-        <>
+        <div className={styles.caja}>
             <h1 className={styles.subtitle}>Home (titulo)</h1>
-            <div className={styles.containerTextImg}>
+
             {
-                
                 stringsToShow.map(text=>{
                     return <TextImg key={text.id}  text={text.contenido}/>
                 })
             }           
-            </div>
-        </>
+
+        </div>
+
+
     )
 }
 

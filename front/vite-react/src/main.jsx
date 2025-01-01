@@ -1,8 +1,15 @@
 import { createRoot } from 'react-dom/client'
-import './reset.css'
+// import './reset.css'
 import './App.css'
 import App from './App.jsx'
+import { BrowserRouter } from 'react-router-dom'
+import { StrictMode } from 'react'
+
 
 createRoot(document.getElementById('root')).render(
-    <App />
+    <StrictMode>
+        <BrowserRouter>
+        <App />
+        </BrowserRouter>
+    </StrictMode>
 )

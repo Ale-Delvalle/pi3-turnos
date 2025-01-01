@@ -7,7 +7,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
 }
 
 form span{
@@ -24,6 +23,7 @@ form div{
 .formContainer {
     display: flex;
     flex-direction: column;
+    margin-top: 20px;
     justify-content: center;
     align-items: center;
     background-color: #e0f7fa; /* Fondo celeste suave */

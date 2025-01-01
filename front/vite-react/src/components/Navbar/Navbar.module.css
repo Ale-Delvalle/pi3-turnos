@@ -1,13 +1,17 @@
-span{
-    font-size: 40px;
+nav p{
+    font-size: 25px;
     margin: 10px;
 }
 
-.config{
-    justify-content: center;
+.menu{
     display: flex;
-    width: fit-content;
+    justify-content: center;
+    width: 650px;
     color: rgb(255, 255, 255);
     background-color: rgb(153, 0, 0);
-    margin: 15px auto;
+    margin-top: 30px;
 }
+
+a {
+    text-decoration: none;
+  }

@@ -1,17 +1,6 @@
 h1{
     font-size: 20px;
 }
-/* img{
-    border-radius: 10px;
-} */
-.containerTextImg{
-    width: 75vw;
-    border: 2px;
-    background-color: rgb(223, 223, 120);
-    justify-content: center;
-    margin: 20px auto;
-    border-radius: 10px;
-}
 
 .subtitle{
     font-size: 30px;
@@ -19,3 +8,8 @@ h1{
     display: flex;
     justify-content: center;
 }
+
+.caja{
+    width: auto;
+}
+
