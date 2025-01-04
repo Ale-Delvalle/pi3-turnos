@@ -1,9 +1,10 @@
 import {Request,Response} from 'express'
-import { createUserService, getAllUsersService,getUserByIdService,findUser } from '../services/userService'
+import { createUserService, getAllUsersService,getUserByIdService,findUser, turnosPorUsuarioService } from '../services/userService'
 import User from '../entities/User'
 import IUserDto from '../dtos/IUserDto'
 import Credential from '../entities/Credential'
 import { validateCredential } from '../services/credentialService'
+import Appointment from '../entities/Appointment'
 
 export const getAllUsers = async (req:Request,res:Response) => {
     try {
@@ -14,6 +15,17 @@ export const getAllUsers = async (req:Request,res:Response) => {
         
     }
 }
+
+export const turnosPorUsuario = async (req:Request,res:Response) => {
+    try {
+        const {id}=req.params;
+        const user:Appointment[]= await turnosPorUsuarioService(Number(id));
+        res.status(200).json(user)
+    } catch (error:any) {
+        res.status(404).json({error:error.message})
+    }
+}
+
 export const getUserById = async (req:Request,res:Response) => {
     try {
         const {id}=req.params;

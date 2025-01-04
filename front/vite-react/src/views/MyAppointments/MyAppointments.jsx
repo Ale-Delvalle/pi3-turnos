@@ -2,14 +2,18 @@ import styles from './MyAppointments.module.css'
 import {useState,useEffect} from 'react'
 import Appointment from '../../components/Appointment/Appointment'
 import axios from 'axios'
+import { useContext } from 'react'
+import { UserDataContext } from '../../context/User'
+import SinUsuarios from '../../components/SinUsuarios/SinUsuarios'
 
 const MisTurnos = () => {
     const [turnos,setTurnos]=useState([])
+    const {user,userAppointments,setUserAppointments}=useContext(UserDataContext)
     useEffect(()=>{
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:3001/appointments/turnos');
-                setTurnos(response.data)
+                const response = await axios.get(`http://localhost:3001/users/turnosPorUsuario/${user.id}`);
+                setUserAppointments(response.data)
             } catch (error) {
                 console.log(error)
             }
@@ -21,8 +25,8 @@ const MisTurnos = () => {
         <div>
             <h1>Mis turnos.</h1>
             {
-                turnos.length ? (
-                    turnos.map((turno) => {
+                userAppointments.length ? (
+                    userAppointments.map((turno) => {
                         return (
                             <Appointment key={turno.id}
                             user={turno.user}
@@ -34,7 +38,7 @@ const MisTurnos = () => {
                         )
                     })
                 ) : (
-                    <div style={{color:"white"}}>No tienes ningún turno.</div>
+                    <SinUsuarios/>
                 )
             }
             </div>

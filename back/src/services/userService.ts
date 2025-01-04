@@ -3,10 +3,23 @@ import IUserDto from '../dtos/IUserDto'
 import User from '../entities/User'
 import Credential from '../entities/Credential'
 import { createCredential } from './credentialService'
+import Appointment from '../entities/Appointment'
 
 export const getAllUsersService = async (): Promise<User[]> => {
     const users: User[] = await userModel.find();
     return users;
+}
+
+export const turnosPorUsuarioService = async (id:number): Promise<Appointment[]> =>{
+
+    const foundUser = await userModel.findOne({
+        where: { id },
+        relations: ['appointments'],
+    });
+
+    if (!foundUser) throw new Error('El usuario no fue encontrado');
+
+    return foundUser.appointments;
 }
 
 export const getUserByIdService = async (id:number): Promise<User> =>{
@@ -14,6 +27,9 @@ export const getUserByIdService = async (id:number): Promise<User> =>{
     if(!foundUser) throw Error('El usuario no fue encontrado')
     return foundUser
 }
+
+
+
 
 export const createUserService = async (createUserDto:IUserDto): Promise<User> => {
     const newCredential:Credential = await createCredential({
