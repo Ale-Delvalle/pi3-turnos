@@ -30,3 +30,26 @@ export const validateLogin = (values) => {
   }
   return errors;
 }
+
+export const validateAppointment = (values) => {
+  const errors = {}
+
+  const hoy = new Date();
+  hoy.setHours(0, 0, 0, 0);
+
+  const fechaIngresada = new Date(values.date);
+  fechaIngresada.setHours(0, 0, 0, 0);
+  
+  if (fechaIngresada <= hoy) {
+      errors.date = 'La fecha debe ser posterior al día de hoy y con 24 hs de anticipo.'
+  }
+  else if(values.date===''){
+    errors.date = 'Falta indicar la fecha'
+  }
+  else if(values.time===''){
+    errors.time = 'Por favor indica la hora'
+  }else if(!values.description){
+    errors.description = 'Indica los detalles del turno'
+  }
+  return errors
+}

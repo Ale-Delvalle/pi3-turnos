@@ -29,6 +29,7 @@ const MisTurnos = () => {
                     userAppointments.map((turno) => {
                         return (
                             <Appointment key={turno.id}
+                            id={turno.id}
                             user={turno.user}
                             date={turno.date}
                             time={turno.time}

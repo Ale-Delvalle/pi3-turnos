@@ -13,8 +13,13 @@ const Navbar = () => {
             <Link to='/home'>
             <p>Home</p>
             </Link>
+
             <Link to='/MisTurnos'>
             <p>Mis Turnos</p>
+            </Link>
+
+            <Link to='/CrearTurno'>
+            <p>Agendar turno</p>
             </Link>
                 </>
             ):(
