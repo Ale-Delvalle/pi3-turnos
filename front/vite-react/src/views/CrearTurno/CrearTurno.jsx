@@ -26,7 +26,7 @@ const CrearTurno = () => {
         <div className={styles.formContainer}>
         <h1>Agenda un turno:</h1>
         <Formik
-      initialValues={{ userId:user.id, date: '', time: '07:00', description:'', status:'Active'}}
+      initialValues={{ userId:user.id, date: '', time: '', description:'', status:'Active'}}
       validate={validateAppointment}
       onSubmit={(values, { setSubmitting, resetForm }) => {
         postData(values)
@@ -34,12 +34,12 @@ const CrearTurno = () => {
         resetForm()
       }}
     >
-      {({ isSubmitting, errors,}) => (
+      {({ isSubmitting, errors}) => (
         <Form>
           <label>Fecha</label>
           <Field type="date" name="date" />
           <ErrorMessage name="date" component="div" />
-
+          
           <label>Hora:</label>
           <Field type="time" name="time"/>
           <ErrorMessage name="time" component="div" />

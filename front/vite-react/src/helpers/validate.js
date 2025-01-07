@@ -1,3 +1,5 @@
+import { validarFecha, validarDiaHabil, validarHorario } from "./dateTimeHandle"; 
+
 export const validateRegister = (values) => {
     const errors = {};
     if(!/^[a-zA-Z\s]+$/.test(values.name)){
@@ -33,20 +35,18 @@ export const validateLogin = (values) => {
 
 export const validateAppointment = (values) => {
   const errors = {}
-
-  const hoy = new Date();
-  hoy.setHours(0, 0, 0, 0);
-
-  const fechaIngresada = new Date(values.date);
-  fechaIngresada.setHours(0, 0, 0, 0);
   
-  if (fechaIngresada <= hoy) {
+  if (validarFecha(values.date)) {
       errors.date = 'La fecha debe ser posterior al día de hoy y con 24 hs de anticipo.'
+  }else if(validarDiaHabil(values.date)){
+    errors.date = 'Solo se pueden agendar turnos de lunes a viernes'
   }
   else if(values.date===''){
     errors.date = 'Falta indicar la fecha'
+  }else if(validarHorario(values.time)){
+    errors.time = 'Solo se pueden agendar turnos entre las 7 hs y las 22 hs'
   }
-  else if(values.time===''){
+  if(values.time===''){
     errors.time = 'Por favor indica la hora'
   }else if(!values.description){
     errors.description = 'Indica los detalles del turno'

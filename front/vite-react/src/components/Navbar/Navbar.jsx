@@ -5,7 +5,12 @@ import { UserDataContext } from '../../context/User'
 
 
 const Navbar = () => {
-    const {isLoggedIn}=useContext(UserDataContext)
+    const {isLoggedIn,setIsLoggedIn}=useContext(UserDataContext)
+
+    const logoutHandle = () => {
+        setIsLoggedIn(false)
+    }
+
     return (
         <nav className={styles.menu}>
             {isLoggedIn ? (
@@ -21,6 +26,8 @@ const Navbar = () => {
             <Link to='/CrearTurno'>
             <p>Agendar turno</p>
             </Link>
+
+            <button onClick={logoutHandle}>Cerrar sesión.</button>
                 </>
             ):(
                 <>
