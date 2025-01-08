@@ -1,9 +1,13 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #000000; /* Fondo negro */
+    background: linear-gradient(to bottom right, rgb(8, 8, 94), rgb(241, 143, 204));
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+.diagonal-gradient {
+    background: linear-gradient(to bottom right, rgb(2, 2, 58), rgb(81, 219, 243));
+  }

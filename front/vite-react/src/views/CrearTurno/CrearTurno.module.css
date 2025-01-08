@@ -9,6 +9,7 @@
     margin: 15px;
 }
 
+
 form div{
     font-size: 15px;
     color: red;
@@ -18,7 +19,6 @@ form div{
 .formContainer h1 {
     font-size: 24px;
     font-weight: bold;
-    text-align: center;
     color: #0288d1; /* Azul */
     margin-bottom: 20px;
 }

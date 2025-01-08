@@ -1,9 +1,25 @@
 .cajaDeTurno{
-    width: 400px;
+    width: 750px;
     border: 2px;
-    background-color: rgb(223, 223, 120);
+    background-color: rgb(219, 219, 219);
+    display: flex;
     justify-content: center;
-    margin: 10px auto;
+    align-items: center;
+    margin: 20px auto;
     padding: 20px;
     border-radius: 10px;
+    transition: 500ms;
+}
+
+.cajaDeTurno:hover{
+    width:800x;
+    transform: scale(1.04)
+}
+
+.cajaDeTurno:hover .statusCancelado {
+    color: red;
+  }
+  
+.cajaDeTurno:hover .statusActivo {
+    color: green;
 }

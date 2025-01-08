@@ -3,3 +3,13 @@ h1{
     color: white;
     justify-content: center;
 }
+
+.container{
+    display: grid;
+    grid-template-columns: 800px;
+}
+
+.container button{
+    width: 120px;
+    height: 40px;
+}

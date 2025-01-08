@@ -29,12 +29,10 @@ const Appointment = ({ id, date, time, user, description, status }) => {
   return (
     <>
       <div className={styles.cajaDeTurno}>
-        <p>Usuario: {user}</p>
         <h2>Fecha: {date}</h2>
         <h2>Hora: {time}</h2>
         <h2>Descripción: {description}</h2>
-        <h2>Status: {status}</h2>
-      </div>
+        <h2 className={status === 'Cancelled' ? styles.statusCancelado : styles.statusActivo}>Status: {status}</h2>
       {
         (status!=='Cancelled') ? 
         <>
@@ -43,8 +41,9 @@ const Appointment = ({ id, date, time, user, description, status }) => {
         <button disabled={true}>Cancelar turno</button>
         </>
         )
-        
       }
+
+      </div>
     </>
   );
 };

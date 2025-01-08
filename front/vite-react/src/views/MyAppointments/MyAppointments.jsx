@@ -22,7 +22,7 @@ const MisTurnos = () => {
     },[])
 
     return (
-        <div>
+        <div className={styles.container}>
             <h1>Mis turnos.</h1>
             {
                 userAppointments.length ? (
