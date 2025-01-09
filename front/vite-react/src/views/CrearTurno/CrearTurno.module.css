@@ -6,7 +6,7 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
     width: 200px;
     border: 2px solid #0288d1; /* Borde azul */
-    margin: 15px;
+    margin: 15px auto;
 }
 
 
@@ -61,7 +61,8 @@ form div{
     background-color: #0288d1; /* Azul */
     color: #ffffff; /* Blanco */
     padding: 12px;
-    width: 40%;
+    width: 100px;
+    height: 60px;
     border: none;
     border-radius: 6px;
     font-size: 16px;
@@ -73,7 +74,7 @@ form div{
 /* Hover en el botón */
 .formContainer button:hover {
     background-color: #01579b; /* Azul más oscuro */
-    transform: scale(1.02);
+    transition: 200ms;
 }
 
 /* Texto de ayuda */

@@ -6,10 +6,17 @@ h1{
 
 .container{
     display: grid;
-    grid-template-columns: 800px;
+    grid-template-columns: 900px;
+}
+
+.centrado{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 .container button{
-    width: 120px;
-    height: 40px;
+    width: 140px;
+    height: 70px;
+    padding: 5px;
 }

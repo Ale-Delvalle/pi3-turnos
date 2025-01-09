@@ -81,7 +81,7 @@ const Login = () => {
             <h1>Ingresa al sistema de turnos</h1>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label>Username</label>
+                    <label>Usuario</label>
                     <input type="text" name='userName' placeholder='Usuario'
                     value={formData.userName} onChange={handleChange}/><br/>
                     {errors.userName && <span>{errors.userName}</span>}
@@ -94,8 +94,8 @@ const Login = () => {
                     {errors.password && <span>{errors.password}</span>}
                 </div>
 
-                <button disabled={isSubmitting||errors.userName||errors.password} type='submit'>Login </button>
-                {isSubmitting && <span>Enviando formulario</span>}
+                <button disabled={isSubmitting||errors.userName||errors.password} type='submit'>Entrar</button>
+                <br/>{isSubmitting && <span>Enviando formulario</span>}
             </form>
         </div>
     )

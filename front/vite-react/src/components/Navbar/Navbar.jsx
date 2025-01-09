@@ -15,8 +15,8 @@ const Navbar = () => {
         <nav className={styles.menu}>
             {isLoggedIn ? (
                 <>
-            <Link to='/home'>
-            <p>Home</p>
+            <Link to='/inicio'>
+            <p>Inicio</p>
             </Link>
 
             <Link to='/MisTurnos'>
@@ -27,15 +27,15 @@ const Navbar = () => {
             <p>Agendar turno</p>
             </Link>
 
-            <button onClick={logoutHandle}>Cerrar sesión.</button>
+            <button className={styles.logout} onClick={logoutHandle}>Cerrar sesión.</button>
                 </>
             ):(
                 <>
-            <Link to='/login'>
-            <p>Login</p>
+            <Link to='/entrar'>
+            <p>Entrar</p>
             </Link>
 
-            <Link to='/register'>
+            <Link to='/registro'>
             <p>Registro</p>
             </Link>
                 </>

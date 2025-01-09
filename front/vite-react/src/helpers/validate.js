@@ -41,7 +41,7 @@ export const validateAppointment = (values) => {
   const errors = {}
   
   if (validarFecha(values.date)) {
-      errors.date = 'La fecha debe ser posterior al día de hoy y con 24 hs de anticipo.'
+      errors.date = 'La fecha debe ser elegida con 48 hs de anticipo.'
   }else if(validarDiaHabil(values.date)){
     errors.date = 'Solo se pueden agendar turnos de lunes a viernes'
   }

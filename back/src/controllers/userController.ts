@@ -58,15 +58,3 @@ export const login = async (req:Request,res:Response) => {
         res.status(400).json({error:error.message})
     }
 }
-
-// export const isTheUserNameAvaiable = async (req:Request,res:Response) => {
-//     try {
-//         const {userName}=req.body;
-//         const userExist = await isTheUserNameAvaiableService({userName})
-//         res.status(200).json({
-//             userExist
-//         })
-//     } catch (error:any) {
-//         res.status(400).json({error:error.message})
-//     }
-// }

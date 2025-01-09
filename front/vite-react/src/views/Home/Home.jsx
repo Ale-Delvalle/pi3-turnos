@@ -7,7 +7,7 @@ const Home = () => {
     const [stringsToShow,setStringsToShow]=useState(texts)
     return (
         <div className={styles.caja}>
-            <h1 className={styles.subtitle}>Home (titulo)</h1>
+            <h1 className={styles.subtitle}>Inicio</h1>
 
             {
                 stringsToShow.map(text=>{

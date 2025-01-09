@@ -1,5 +1,5 @@
 import Navbar from './components/Navbar/Navbar'
-// import styles from './App.module.css'
+import styles from './App.module.css'
 import Home from './views/Home/Home'
 import MisTurnos from './views/MyAppointments/MyAppointments'
 import Login from './views/Login/Login'
@@ -13,12 +13,13 @@ function App() {
   const {isLoggedIn}=useContext(UserDataContext)
   return (
     <>
+    <h1 className={styles.title}>Clínica San Sebastián</h1>
     <Navbar/>
     <Routes>
       <Route path='/' element={isLoggedIn ? <MisTurnos/>: <Home/>}/>
-      <Route path='/home' element={isLoggedIn ? <Home/>: <Login/>}/>
-      <Route path='/login' element={<Login/>}/>
-      <Route path='/register' element={<Register/>}/>
+      <Route path='/inicio' element={isLoggedIn ? <Home/>: <Login/>}/>
+      <Route path='/entrar' element={<Login/>}/>
+      <Route path='/registro' element={<Register/>}/>
       <Route path='/MisTurnos' element={isLoggedIn ? <MisTurnos/>: <Login/>}/>
       <Route path='/CrearTurno' element={isLoggedIn ? <CrearTurno/>: <Login/>}/>
     </Routes>

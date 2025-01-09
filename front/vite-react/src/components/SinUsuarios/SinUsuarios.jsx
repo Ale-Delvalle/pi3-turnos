@@ -1,6 +1,8 @@
+import styles from './SinUsuarios.module.css'
+
 const SinUsuarios = () => {
     return (
-        <div style={{color:"white"}}>No tienes ningún turno.</div>
+        <div className={styles.mensaje}>No tienes ningún turno.</div>
     )
 }
 

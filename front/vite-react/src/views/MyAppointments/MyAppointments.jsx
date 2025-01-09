@@ -23,7 +23,7 @@ const MisTurnos = () => {
 
     return (
         <div className={styles.container}>
-            <h1>Mis turnos.</h1>
+            <h2 className={styles.centrado}>Mis turnos.</h2>
             {
                 userAppointments.length ? (
                     userAppointments.map((turno) => {
