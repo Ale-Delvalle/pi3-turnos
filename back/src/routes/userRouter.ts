@@ -5,6 +5,7 @@ const router = Router();
 router.get("/getUsers",getAllUsers)
 router.get("/getUserById/:id",getUserById)
 router.get("/turnosPorUsuario/:id",turnosPorUsuario)
+// router.post("/userExist",isTheUserNameAvaiable)
 router.post("/newUser",register)
 router.post("/login",login)
 

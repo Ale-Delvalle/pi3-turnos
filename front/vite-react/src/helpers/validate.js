@@ -10,8 +10,12 @@ export const validateRegister = (values) => {
     } else if (
       !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
     ) {
-      errors.email = 'Invalid email address';
-    } else if(!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/.test(values.password)){
+      errors.email = 'Dirección de e-mail inválida';
+    } 
+    if(values.birthday===''){
+      errors.birthday = 'Falta indicar la fecha'
+    }
+    else if(!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/.test(values.password)){
       errors.password='La contraseña debe contener al menos 8 caracteres, una mayuscula, una minuscula y un número.'
     }else if(!/^\d+$/.test(values.nDni)){
       errors.nDni='Solo se aceptan números'

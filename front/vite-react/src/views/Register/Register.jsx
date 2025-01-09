@@ -61,7 +61,7 @@ const Register = () => {
           <ErrorMessage name="passwordRepeat" component="div" />
 
 
-          <button type="submit" disabled={isSubmitting||errors.email||errors.password}>
+          <button type="submit" disabled={isSubmitting||errors.email||errors.password||errors.birthday}>
             Submit
           </button>
         </Form>

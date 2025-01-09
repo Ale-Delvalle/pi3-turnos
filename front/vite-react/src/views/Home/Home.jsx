@@ -11,7 +11,7 @@ const Home = () => {
 
             {
                 stringsToShow.map(text=>{
-                    return <TextImg key={text.id}  text={text.contenido}/>
+                    return <TextImg key={text.id}  text={text.contenido} imagen={text.imagen}/>
                 })
             }           
 

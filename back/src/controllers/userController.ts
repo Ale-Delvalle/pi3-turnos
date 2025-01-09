@@ -1,5 +1,5 @@
 import {Request,Response} from 'express'
-import { createUserService, getAllUsersService,getUserByIdService,findUser, turnosPorUsuarioService } from '../services/userService'
+import { createUserService, getAllUsersService,getUserByIdService,findUserService, turnosPorUsuarioService} from '../services/userService'
 import User from '../entities/User'
 import IUserDto from '../dtos/IUserDto'
 import Credential from '../entities/Credential'
@@ -50,7 +50,7 @@ export const login = async (req:Request,res:Response) => {
     try {
         const {userName,password}=req.body;
         const credential:Credential = await validateCredential({userName,password})
-        const user:User|null = await findUser(credential.id)
+        const user:User|null = await findUserService(credential.id)
         res.status(200).json({
             user
         })
@@ -58,3 +58,15 @@ export const login = async (req:Request,res:Response) => {
         res.status(400).json({error:error.message})
     }
 }
+
+// export const isTheUserNameAvaiable = async (req:Request,res:Response) => {
+//     try {
+//         const {userName}=req.body;
+//         const userExist = await isTheUserNameAvaiableService({userName})
+//         res.status(200).json({
+//             userExist
+//         })
+//     } catch (error:any) {
+//         res.status(400).json({error:error.message})
+//     }
+// }
