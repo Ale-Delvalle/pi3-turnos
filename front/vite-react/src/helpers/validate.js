@@ -1,7 +1,8 @@
-import { validarFecha, validarDiaHabil, validarHorario } from "./dateTimeHandle"; 
+import { validarFecha, validarDiaHabil, validarHorario } from "./dateTimeHandle";
 
 export const validateRegister = (values) => {
     const errors = {};
+
     if(!/^[a-zA-Z\s]+$/.test(values.name)){
       errors.name='Solo se aceptan letras sin acentos'
     }
@@ -21,7 +22,8 @@ export const validateRegister = (values) => {
       errors.nDni='Solo se aceptan números'
     }else if(!/^(?=.*[a-zA-Z\d].*)[a-zA-Z\d._-]{5,}$/.test(values.userName)){
       errors.userName='El usuario debe ser de al menos 5 caracteres y solo se admiten letras, numeros, puntos y guiones medios y bajos (- _)'
-    }else if(values.password!==values.passwordRepeat){
+    }
+    else if(values.password!==values.passwordRepeat){
       errors.password='Las contraseñas son diferentes'
     }
     return errors;

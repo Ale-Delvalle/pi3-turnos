@@ -1,5 +1,5 @@
 import {Request,Response} from 'express'
-import { createUserService, getAllUsersService,getUserByIdService,findUserService, turnosPorUsuarioService} from '../services/userService'
+import { createUserService, getAllUsersService,getUserByIdService,findUserService, turnosPorUsuarioService, isTheUserNameAvaiableService} from '../services/userService'
 import User from '../entities/User'
 import IUserDto from '../dtos/IUserDto'
 import Credential from '../entities/Credential'
@@ -54,6 +54,18 @@ export const login = async (req:Request,res:Response) => {
         res.status(200).json({
             user
         })
+    } catch (error:any) {
+        res.status(400).json({error:error.message})
+    }
+}
+
+export const isTheUserNameAvaiable = async (req:Request,res:Response) => {
+    try {
+        const {userName}=req.body;
+        const userExist = await isTheUserNameAvaiableService({userName})
+        res.status(200).json([
+            userExist
+        ])
     } catch (error:any) {
         res.status(400).json({error:error.message})
     }

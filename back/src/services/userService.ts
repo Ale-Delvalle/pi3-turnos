@@ -46,3 +46,13 @@ export const findUserService = async (credentialId:number):Promise<User|null> =>
     const user:User|null = await userModel.findOneBy({credential: {id:credentialId}})
     return user
 }
+
+export const isTheUserNameAvaiableService = async (userExistDto:IUserExistDto):Promise<object>=> {
+    const {userName}=userExistDto
+    const foundUser:Credential|null = await credentialModel.findOneBy({userName})
+    if(foundUser){
+        return { userExist: true }
+    }else{
+        return { userExist:false}
+    }
+}

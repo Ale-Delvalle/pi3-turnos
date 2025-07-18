@@ -7,7 +7,7 @@ import User from "../entities/User"
 export const AppDataSource = new DataSource({
     type: "postgres",
     host: DB_HOST || 'localhost',
-    port: DB_PORT || 3000,
+    port: DB_PORT || 5432,
     username: DB_USERNAME,
     password: DB_PASSWORD,
     database: DB_NAME,
