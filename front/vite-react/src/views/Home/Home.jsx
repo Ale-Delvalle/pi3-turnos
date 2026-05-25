@@ -4,6 +4,7 @@ import texts from '../../helpers/texts'
 import styles from './Home.module.css'
 import TextImg from '../../components/TextImg/TextImg'
 import { UserDataContext } from '../../context/User'
+import heroImg from '../../imgs/hero_medical_illustration.png'
 
 const Home = () => {
     const [stringsToShow, setStringsToShow] = useState(texts)
@@ -27,6 +28,9 @@ const Home = () => {
                             </Link>
                         )}
                     </div>
+                </div>
+                <div className={styles.heroImageContainer}>
+                    <img src={heroImg} alt="Clínica San Sebastián" className={styles.heroImage} />
                 </div>
             </section>
 

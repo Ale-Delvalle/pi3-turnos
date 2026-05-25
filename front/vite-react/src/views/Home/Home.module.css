@@ -5,9 +5,8 @@
   width: 100%;
 }
 
-/* Sección Hero */
 .hero {
-  padding: 80px 40px;
+  padding: 60px 40px;
   background: radial-gradient(circle at 80% 20%, rgba(20, 184, 166, 0.12), transparent 45%),
               rgba(17, 24, 39, 0.45);
   border: 1px solid var(--border-color);
@@ -15,17 +14,36 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
+  gap: 40px;
   box-shadow: var(--shadow-lg);
 }
 
 .heroContent {
-  max-width: 720px;
+  flex: 1.2;
+  max-width: 650px;
   display: flex;
   flex-direction: column;
   gap: 20px;
   text-align: left;
+}
+
+.heroImageContainer {
+  flex: 0.8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 420px;
+}
+
+.heroImage {
+  width: 100%;
+  height: auto;
+  max-height: 360px;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  filter: drop-shadow(0 8px 24px rgba(20, 184, 166, 0.2));
 }
 
 .tagline {
@@ -165,7 +183,23 @@
 /* Responsividad */
 @media (max-width: 768px) {
   .hero {
+    flex-direction: column;
     padding: 40px 24px;
+    gap: 30px;
+    text-align: center;
+  }
+
+  .heroContent {
+    align-items: center;
+    text-align: center;
+  }
+
+  .tagline {
+    align-self: center;
+  }
+
+  .heroImageContainer {
+    max-width: 280px;
   }
   
   .brandTitle {
