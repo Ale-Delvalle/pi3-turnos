@@ -21,19 +21,10 @@ const Home = () => {
                         Reserva, consulta y gestiona tus turnos médicos en Clínica San Sebastián de manera rápida, confiable y 100% online.
                     </p>
                     <div className={styles.heroActions}>
-                        {isLoggedIn ? (
+                        {isLoggedIn && (
                             <Link to="/MisTurnos" className={styles.btnPrimary}>
                                 Gestionar Mis Turnos →
                             </Link>
-                        ) : (
-                            <>
-                                <Link to="/entrar" className={styles.btnPrimary}>
-                                    Iniciar Sesión
-                                </Link>
-                                <Link to="/registro" className={styles.btnSecondary}>
-                                    Crear una Cuenta
-                                </Link>
-                            </>
                         )}
                     </div>
                 </div>
