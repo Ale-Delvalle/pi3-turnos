@@ -15,11 +15,6 @@ const Navbar = () => {
 
     return (
         <header className={`${styles.header} animate-fade-in-up`}>
-            <Link to="/" className={styles.logoContainer}>
-                <div className={styles.logo}>
-                    <span className={styles.logoDot}></span>
-                </div>
-            </Link>
             <nav className={styles.navLinks}>
                 {isLoggedIn ? (
                     <>
