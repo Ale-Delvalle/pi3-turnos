@@ -13,7 +13,6 @@ function App() {
   const {isLoggedIn}=useContext(UserDataContext)
   return (
     <>
-    <h1 className={styles.title}>Clínica San Sebastián</h1>
     <Navbar/>
     <Routes>
       <Route path='/' element={isLoggedIn ? <MisTurnos/>: <Home/>}/>

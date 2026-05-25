@@ -1,48 +1,69 @@
 import styles from './Navbar.module.css'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useContext } from 'react'
 import { UserDataContext } from '../../context/User'
 
-
 const Navbar = () => {
-    const {isLoggedIn,setIsLoggedIn}=useContext(UserDataContext)
+    const { isLoggedIn, setIsLoggedIn } = useContext(UserDataContext)
+    const location = useLocation()
 
     const logoutHandle = () => {
         setIsLoggedIn(false)
     }
 
+    const isActive = (path) => location.pathname === path
+
     return (
-        <nav className={styles.menu}>
-            {isLoggedIn ? (
-                <>
-            <Link to='/inicio'>
-            <p>Inicio</p>
+        <header className={`${styles.header} animate-fade-in-up`}>
+            <Link to="/" className={styles.logoContainer}>
+                <div className={styles.logo}>
+                    <span className={styles.logoDot}></span>
+                    <h3>Clínica <span>San Sebastián</span></h3>
+                </div>
             </Link>
-
-            <Link to='/MisTurnos'>
-            <p>Mis Turnos</p>
-            </Link>
-
-            <Link to='/CrearTurno'>
-            <p>Agendar turno</p>
-            </Link>
-
-            <button className={styles.logout} onClick={logoutHandle}>Cerrar sesión.</button>
-                </>
-            ):(
-                <>
-            <Link to='/entrar'>
-            <p>Entrar</p>
-            </Link>
-
-            <Link to='/registro'>
-            <p>Registro</p>
-            </Link>
-                </>
-            )
-            }
-
-        </nav>
+            <nav className={styles.navLinks}>
+                {isLoggedIn ? (
+                    <>
+                        <Link 
+                            to='/inicio' 
+                            className={`${styles.link} ${isActive('/inicio') ? styles.active : ''}`}
+                        >
+                            Inicio
+                        </Link>
+                        <Link 
+                            to='/MisTurnos' 
+                            className={`${styles.link} ${isActive('/MisTurnos') ? styles.active : ''}`}
+                        >
+                            Mis Turnos
+                        </Link>
+                        <Link 
+                            to='/CrearTurno' 
+                            className={`${styles.link} ${isActive('/CrearTurno') ? styles.active : ''}`}
+                        >
+                            Agendar Turno
+                        </Link>
+                        <button className={styles.logoutBtn} onClick={logoutHandle}>
+                            Cerrar Sesión
+                        </button>
+                    </>
+                ) : (
+                    <>
+                        <Link 
+                            to='/entrar' 
+                            className={`${styles.link} ${isActive('/entrar') ? styles.active : ''}`}
+                        >
+                            Entrar
+                        </Link>
+                        <Link 
+                            to='/registro' 
+                            className={`${styles.linkRegister} ${isActive('/registro') ? styles.activeRegister : ''}`}
+                        >
+                            Registrarse
+                        </Link>
+                    </>
+                )}
+            </nav>
+        </header>
     )
 }
 

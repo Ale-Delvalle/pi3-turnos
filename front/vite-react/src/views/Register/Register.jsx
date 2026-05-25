@@ -3,6 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { validateRegister } from '../../helpers/validate';
 import axios from 'axios';
 import styles from './Register.module.css'
+import { Link } from 'react-router-dom';
 
 const Register = () => {
   const postData = async (formData) => {
@@ -15,7 +16,7 @@ const Register = () => {
         }
     } catch (error) {
         console.log(error)
-        alert('El usuario no se pudo loguear')
+        alert('El usuario no se pudo registrar')
     }
 }
 
@@ -45,57 +46,86 @@ const userExist = async (userName) => {
     }
   };
     return (
-        <div className={styles.formContainer}>
-        <h1>Registrate en la clínica</h1>
-        <Formik
-      initialValues={{ email: '', password: '',passwordRepeat:'', name:'', birthday:'', nDni:'', userName:'',birthday:''}}
-      validate={validateRegister}
-      onSubmit={(values, { setSubmitting, resetForm }) => {
-        postData(values)
-        setSubmitting(false)
-        resetForm()
-      }}
-    >
-      {({ isSubmitting, errors, setFieldError, setTouched }) => (
-        <Form>
-          <label>Name:</label>
-          <Field type="text" name="name" />
-          <ErrorMessage name="name" component="div" />
+        <div className={`${styles.formContainer} animate-fade-in-up`}>
+          <div className={styles.formHeader}>
+              <h1>Crear Cuenta</h1>
+              <p>Regístrate para gestionar tus turnos médicos</p>
+          </div>
+          <Formik
+            initialValues={{ email: '', password: '', passwordRepeat:'', name:'', birthday:'', nDni:'', userName:'' }}
+            validate={validateRegister}
+            onSubmit={(values, { setSubmitting, resetForm }) => {
+              postData(values)
+              setSubmitting(false)
+              resetForm()
+            }}
+          >
+            {({ isSubmitting, errors, setFieldError, setTouched }) => (
+              <Form className={styles.form}>
+                <div className={styles.formGrid}>
+                  <div className={styles.inputGroup}>
+                    <label className={styles.label}>Nombre Completo</label>
+                    <Field type="text" name="name" className={styles.input} placeholder="Juan Pérez" />
+                    <ErrorMessage name="name" component="span" className={styles.errorSpan} />
+                  </div>
 
-          <label>Email:</label>
-          <Field type="email" name="email" />
-          <ErrorMessage name="email" component="div" />
+                  <div className={styles.inputGroup}>
+                    <label className={styles.label}>Correo Electrónico</label>
+                    <Field type="email" name="email" className={styles.input} placeholder="correo@ejemplo.com" />
+                    <ErrorMessage name="email" component="span" className={styles.errorSpan} />
+                  </div>
 
-          <label>Cumpleaños:</label>
-          <Field type="date" name="birthday" />
-          <ErrorMessage name="birthday" component="div" />
+                  <div className={styles.inputGroup}>
+                    <label className={styles.label}>Fecha de Nacimiento</label>
+                    <Field type="date" name="birthday" className={styles.input} />
+                    <ErrorMessage name="birthday" component="span" className={styles.errorSpan} />
+                  </div>
 
-          <label>DNI:</label>
-          <Field type="number" name="nDni" />
-          <ErrorMessage name="nDni" component="div" />
+                  <div className={styles.inputGroup}>
+                    <label className={styles.label}>DNI / Identificación</label>
+                    <Field type="number" name="nDni" className={styles.input} placeholder="Número de DNI" />
+                    <ErrorMessage name="nDni" component="span" className={styles.errorSpan} />
+                  </div>
 
-          <label htmlFor="userName">Nombre de usuario</label>
-          <Field
-            name="userName" type="text"
-            onBlur={(e) => handleUserBlur(e, setFieldError, setTouched)}
-          />
-          <ErrorMessage name="userName" component="div" />
+                  <div className={styles.inputGroupFull}>
+                    <label className={styles.label} htmlFor="userName">Nombre de Usuario</label>
+                    <Field
+                      name="userName" 
+                      type="text"
+                      className={styles.input}
+                      placeholder="nombre_usuario"
+                      onBlur={(e) => handleUserBlur(e, setFieldError, setTouched)}
+                    />
+                    <ErrorMessage name="userName" component="span" className={styles.errorSpan} />
+                  </div>
 
-          <label>Contraseña:</label>
-          <Field type="password" name="password" />
-          <ErrorMessage name="password" component="div" />
+                  <div className={styles.inputGroup}>
+                    <label className={styles.label}>Contraseña</label>
+                    <Field type="password" name="password" className={styles.input} placeholder="••••••••" />
+                    <ErrorMessage name="password" component="span" className={styles.errorSpan} />
+                  </div>
 
-          <label>Repetí la contraseña:</label>
-          <Field type="password" name="passwordRepeat" />
-          <ErrorMessage name="passwordRepeat" component="div" />
+                  <div className={styles.inputGroup}>
+                    <label className={styles.label}>Repetir Contraseña</label>
+                    <Field type="password" name="passwordRepeat" className={styles.input} placeholder="••••••••" />
+                    <ErrorMessage name="passwordRepeat" component="span" className={styles.errorSpan} />
+                  </div>
+                </div>
 
-
-          <button type="submit" disabled={isSubmitting||errors.email||errors.userName||errors.password||errors.birthday}>
-            Enviar
-          </button>
-        </Form>
-      )}
-    </Formik>
+                <button 
+                  type="submit" 
+                  disabled={isSubmitting || errors.email || errors.userName || errors.password || errors.birthday}
+                  className={styles.submitBtn}
+                >
+                  {isSubmitting ? 'Registrando...' : 'Registrarse'}
+                </button>
+              </Form>
+            )}
+          </Formik>
+          
+          <div className={styles.formFooter}>
+              <p>¿Ya tienes una cuenta? <Link to="/entrar">Inicia sesión</Link></p>
+          </div>
         </div>
     )
 

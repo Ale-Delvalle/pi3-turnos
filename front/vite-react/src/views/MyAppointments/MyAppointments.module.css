@@ -1,22 +1,191 @@
-h1{
-    font-size: 30px;
-    color: white;
-    justify-content: center;
+.dashboardContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  width: 100%;
 }
 
-.container{
-    display: grid;
-    grid-template-columns: 900px;
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
 }
 
-.centrado{
-    display: flex;
-    justify-content: center;
+.welcome h2 {
+  font-size: 1.85rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.welcome p {
+  color: var(--text-secondary);
+  margin-top: 4px;
+  font-size: 0.95rem;
+}
+
+.welcome span {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.btnAgendar {
+  padding: 12px 24px;
+  background-color: var(--primary);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 14px rgba(13, 148, 136, 0.3);
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.btnAgendar:hover {
+  background-color: var(--primary-hover);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(13, 148, 136, 0.45);
+}
+
+.btnAgendar:active {
+  transform: translateY(0);
+}
+
+/* Fila de Estadísticas */
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+}
+
+.statCard {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  box-shadow: var(--shadow-sm);
+}
+
+.statActive {
+  border-left: 4px solid var(--success);
+}
+
+.statCancelled {
+  border-left: 4px solid var(--danger);
+}
+
+.statNumber {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.1;
+}
+
+.statActive .statNumber {
+  color: var(--success);
+}
+
+.statCancelled .statNumber {
+  color: var(--danger);
+}
+
+.statLabel {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Listado de Turnos */
+.appointmentsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.sectionTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  border-left: 3px solid var(--primary);
+  padding-left: 10px;
+}
+
+.appointmentsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+  width: 100%;
+}
+
+/* Estado Vacío */
+.emptyStateCard {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  text-align: center;
+  width: 100%;
+  box-shadow: var(--shadow-sm);
+}
+
+.btnAgendarEmpty {
+  padding: 12px 28px;
+  background-color: var(--primary);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(13, 148, 136, 0.3);
+}
+
+.btnAgendarEmpty:hover {
+  background-color: var(--primary-hover);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(13, 148, 136, 0.4);
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .statsRow {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .header {
+    flex-direction: column;
     align-items: flex-start;
-}
-
-.container button{
-    width: 140px;
-    height: 70px;
-    padding: 5px;
+    padding-bottom: 20px;
+  }
+  
+  .btnAgendar {
+    width: 100%;
+  }
 }

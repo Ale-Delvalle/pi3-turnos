@@ -4,7 +4,7 @@ import axios from 'axios'
 import styles from './Login.module.css'
 import { useContext } from "react";
 import { UserDataContext } from '../../context/User';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 
 const Login = () => {
@@ -54,6 +54,7 @@ const Login = () => {
 
     const postData = async () => {
         try {
+            // Nota: Se asume que el backend correrá en el puerto 3001
             const response = await axios.post('http://localhost:3001/users/login', formData)
             if(response.status === 200) {
                 alert('Usuario logueado exitosamente')
@@ -61,11 +62,6 @@ const Login = () => {
                 setIsLoggedIn(true)
                 const credentials={id:response.data.user.id,userName:formData.userName, password:formData.password}
                 setUser(credentials)
-                // if(credentials){
-                //     console.log(`La user data / User: ${credentials.userName}, Password:${credentials.password}`);
-                // }else{
-                //     console.log('Está vacio')
-                // }
             }else{
                 alert('El usuario NO se logueó exitosamente')
             }
@@ -77,26 +73,52 @@ const Login = () => {
     }
 
     return (
-        <div className={styles.formContainer}>
-            <h1>Ingresa al sistema de turnos</h1>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Usuario</label>
-                    <input type="text" name='userName' placeholder='Usuario'
-                    value={formData.userName} onChange={handleChange}/><br/>
-                    {errors.userName && <span>{errors.userName}</span>}
+        <div className={`${styles.formContainer} animate-fade-in-up`}>
+            <div className={styles.formHeader}>
+                <h1>Iniciar Sesión</h1>
+                <p>Accede al portal médico de la clínica</p>
+            </div>
+            <form onSubmit={handleSubmit} className={styles.form}>
+                <div className={styles.inputGroup}>
+                    <label className={styles.label}>Usuario</label>
+                    <input 
+                        type="text" 
+                        name='userName' 
+                        placeholder='Tu nombre de usuario'
+                        className={styles.input}
+                        value={formData.userName} 
+                        onChange={handleChange}
+                    />
+                    {errors.userName && <span className={styles.errorSpan}>{errors.userName}</span>}
                 </div>
 
-                <div>
-                    <label>Contraseña:</label>
-                    <input type="password" name='password' placeholder='********'
-                    value={formData.password} onChange={handleChange}/><br/>
-                    {errors.password && <span>{errors.password}</span>}
+                <div className={styles.inputGroup}>
+                    <label className={styles.label}>Contraseña</label>
+                    <input 
+                        type="password" 
+                        name='password' 
+                        placeholder='••••••••'
+                        className={styles.input}
+                        value={formData.password} 
+                        onChange={handleChange}
+                    />
+                    {errors.password && <span className={styles.errorSpan}>{errors.password}</span>}
                 </div>
 
-                <button disabled={isSubmitting||errors.userName||errors.password} type='submit'>Entrar</button>
-                <br/>{isSubmitting && <span>Enviando formulario</span>}
+                <button 
+                    disabled={isSubmitting || errors.userName || errors.password} 
+                    type='submit'
+                    className={styles.submitBtn}
+                >
+                    {isSubmitting ? 'Enviando...' : 'Ingresar'}
+                </button>
+                
+                {isSubmitting && <span className={styles.submittingText}>Verificando credenciales...</span>}
             </form>
+            
+            <div className={styles.formFooter}>
+                <p>¿No tienes cuenta? <Link to="/registro">Regístrate aquí</Link></p>
+            </div>
         </div>
     )
 }

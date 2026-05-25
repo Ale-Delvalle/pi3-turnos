@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import styles from "./Appointment.module.css";
 import { UserDataContext } from "../../context/User";
 import axios from "axios";
@@ -6,10 +6,13 @@ import axios from "axios";
 const Appointment = ({ id, date, time, user, description, status }) => {
   const { userAppointments, setUserAppointments } = useContext(UserDataContext);
 
+  const isCancelled = status === 'Cancelled' || status === 'Cancelado';
+
   const cancelHandle = async (event) => {
     event.preventDefault();
 
     try {
+      // Nota: Se asume que el backend correrá en el puerto 3001
       const response = await axios.put(
         `http://localhost:3001/appointments/cancelar/${id}`
       );
@@ -27,24 +30,46 @@ const Appointment = ({ id, date, time, user, description, status }) => {
   };
 
   return (
-    <>
-      <div className={styles.cajaDeTurno}>
-        <h2>Fecha: {date}</h2>
-        <h2>Hora: {time}</h2>
-        <h2>Descripción: {description}</h2>
-        <h2 className={status === 'Cancelled' ? styles.statusCancelado : styles.statusActivo}>Status: {status}</h2>
-      {
-        (status!=='Cancelled') ? 
-        <>
-        <button onClick={cancelHandle}>Cancelar turno</button>
-        </>: ( <>
-        <button disabled={true}>Cancelar turno</button>
-        </>
-        )
-      }
-
+    <div className={`${styles.appointmentCard} ${isCancelled ? styles.cardCancelled : ''}`}>
+      {/* Cabecera del Turno */}
+      <div className={styles.cardHeader}>
+        <div className={styles.dateTimeGroup}>
+          <div className={styles.infoRow}>
+            <span className={styles.icon}>📅</span>
+            <span className={styles.infoText}>{date}</span>
+          </div>
+          <div className={styles.infoRow}>
+            <span className={styles.icon}>🕒</span>
+            <span className={styles.infoText}>{time} hs</span>
+          </div>
+        </div>
+        
+        {/* Badge de Estado */}
+        <span className={`${styles.statusBadge} ${isCancelled ? styles.statusCancelado : styles.statusActivo}`}>
+          <span className={styles.badgeDot}></span>
+          {isCancelled ? 'Cancelado' : 'Activo'}
+        </span>
       </div>
-    </>
+
+      {/* Contenido / Descripción */}
+      <div className={styles.cardBody}>
+        <span className={styles.descLabel}>Motivo de Consulta:</span>
+        <p className={styles.description}>{description || "Consulta médica general."}</p>
+      </div>
+
+      {/* Acciones */}
+      <div className={styles.cardFooter}>
+        {!isCancelled ? (
+          <button onClick={cancelHandle} className={styles.cancelBtn}>
+            Cancelar Cita
+          </button>
+        ) : (
+          <button disabled={true} className={styles.cancelledBtn}>
+            Cita Cancelada
+          </button>
+        )}
+      </div>
+    </div>
   );
 };
 

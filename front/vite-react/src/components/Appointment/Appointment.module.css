@@ -1,24 +1,173 @@
-.cajaDeTurno{
-    width: 900px;
-    border: 2px;
-    background-color: rgb(219, 219, 219);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px auto;
-    padding: 15px;
-    border-radius: 10px;
-    transition: 500ms;
+.appointmentCard {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 100%;
 }
 
-.cajaDeTurno:hover{
-    transform: scale(1.04)
+.appointmentCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(20, 184, 166, 0.2);
+  background: var(--bg-card-hover);
 }
 
-.cajaDeTurno:hover .statusCancelado {
-    color: red;
-  }
-  
-.cajaDeTurno:hover .statusActivo {
-    color: green;
+.cardCancelled {
+  opacity: 0.65;
+  border-color: rgba(255, 255, 255, 0.04);
+  background: rgba(17, 24, 39, 0.3);
+}
+
+.cardCancelled:hover {
+  transform: none;
+  box-shadow: var(--shadow-sm);
+  border-color: rgba(255, 255, 255, 0.04);
+  background: rgba(17, 24, 39, 0.3);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 16px;
+}
+
+.dateTimeGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.infoRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon {
+  font-size: 0.95rem;
+}
+
+.infoText {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Badges de Estado */
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.statusActivo {
+  background-color: var(--success-light);
+  color: var(--success);
+  border: 1px solid rgba(16, 185, 129, 0.15);
+}
+
+.statusActivo .badgeDot {
+  background-color: var(--success);
+  box-shadow: 0 0 8px var(--success);
+}
+
+.statusCancelado {
+  background-color: var(--danger-light);
+  color: var(--danger);
+  border: 1px solid rgba(244, 63, 94, 0.15);
+}
+
+.statusCancelado .badgeDot {
+  background-color: var(--danger);
+  box-shadow: 0 0 8px var(--danger);
+}
+
+.badgeDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* Cuerpo de la Tarjeta */
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex-grow: 1;
+}
+
+.descLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.description {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+/* Pie de la Tarjeta */
+.cardFooter {
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+.cancelBtn {
+  width: 100%;
+  padding: 11px 16px;
+  background-color: var(--danger-light);
+  border: 1px solid rgba(244, 63, 94, 0.15);
+  border-radius: var(--radius-sm);
+  color: var(--danger);
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: inherit;
+}
+
+.cancelBtn:hover {
+  background-color: var(--danger);
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(244, 63, 94, 0.25);
+}
+
+.cancelBtn:active {
+  transform: scale(0.98);
+}
+
+.cancelledBtn {
+  width: 100%;
+  padding: 11px 16px;
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: not-allowed;
+  font-family: inherit;
+  text-align: center;
 }
