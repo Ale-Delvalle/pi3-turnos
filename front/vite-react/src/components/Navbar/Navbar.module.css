@@ -24,16 +24,12 @@
   gap: 10px;
 }
 
-.logo h3 {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  letter-spacing: -0.01em;
-}
-
-.logo h3 span {
-  color: var(--primary);
-  font-weight: 800;
+.navTagline {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  letter-spacing: 0.01em;
+  line-height: 1.2;
 }
 
 .logoDot {

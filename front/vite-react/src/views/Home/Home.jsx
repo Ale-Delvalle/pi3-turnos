@@ -14,8 +14,9 @@ const Home = () => {
             {/* Sección Hero */}
             <section className={styles.hero}>
                 <div className={styles.heroContent}>
+                    <h1 className={styles.brandTitle}>Clínica <span>San Sebastián</span></h1>
                     <span className={styles.tagline}>Portal de Turnos Oficial</span>
-                    <h1 className={styles.heroTitle}>Tu bienestar, en manos profesionales</h1>
+                    <h2 className={styles.heroTitle}>Tu bienestar, en manos profesionales</h2>
                     <p className={styles.heroSubtitle}>
                         Reserva, consulta y gestiona tus turnos médicos en Clínica San Sebastián de manera rápida, confiable y 100% online.
                     </p>

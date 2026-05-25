@@ -18,7 +18,7 @@ const Navbar = () => {
             <Link to="/" className={styles.logoContainer}>
                 <div className={styles.logo}>
                     <span className={styles.logoDot}></span>
-                    <h3>Clínica <span>San Sebastián</span></h3>
+                    <span className={styles.navTagline}>Revisa nuestra cartilla de profesionales y agenda una cita</span>
                 </div>
             </Link>
             <nav className={styles.navLinks}>
